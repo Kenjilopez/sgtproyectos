@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SGC ISO 9001 - Mockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">SGC<span>•</span>ISO9001</div>
+    <nav>
+      <button class="nav-item active" data-section="dashboard">🏠 Dashboard</button>
+      <button class="nav-item" data-section="documentos">📄 Gestión Documental</button>
+      <button class="nav-item" data-section="auditorias">🕵️ Auditorías</button>
+      <button class="nav-item" data-section="noConformidades">⚠️ No Conformidades</button>
+      <button class="nav-item" data-section="acciones">🛠 Acciones Correctivas</button>
+      <button class="nav-item" data-section="indicadores">📊 Indicadores</button>
+      <button class="nav-item" data-section="riesgos">📉 Riesgos</button>
+      <button class="nav-item" data-section="clientes">👤 Clientes</button>
+      <button class="nav-item" data-section="config">⚙️ Configuración</button>
+    </nav>
+  </aside>
+  <main>
+    <header class="topbar">
+      <input type="search" placeholder="Buscar…"/>
+      <div class="user">Kenji ◦ Coordinador SGC</div>
+    </header>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="section visible">
+      <h1>Panel de Seguimiento</h1>
+      <div class="kpis">
+        <div class="kpi">
+          <div class="kpi-title">Cumplimiento SGC</div>
+          <div class="kpi-value">82%</div>
+          <div class="kpi-sub">↑ +4% vs. mes anterior</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-title">Auditorías este semestre</div>
+          <div class="kpi-value">6</div>
+          <div class="kpi-sub">2 internas • 4 externas</div>
+        </div>
+        <div class="kpi warn">
+          <div class="kpi-title">No Conformidades abiertas</div>
+          <div class="kpi-value">9</div>
+          <div class="kpi-sub">3 críticas • 6 menores</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-title">Satisfacción del cliente</div>
+          <div class="kpi-value">4.3/5</div>
+          <div class="kpi-sub">Última encuesta</div>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Hitos próximos (cronograma)</div>
+          <ul class="timeline">
+            <li><strong>01 Sep 2025</strong> • Presentación / Video speech</li>
+            <li><strong>08 Sep 2025</strong> • Documento (individual)</li>
+            <li><strong>15 Sep 2025</strong> • Entregable de herramienta</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Top Riesgos</div>
+          <table class="table">
+            <thead><tr><th>Riesgo</th><th>Prob.</th><th>Impacto</th><th>Plan</th></tr></thead>
+            <tbody>
+              <tr><td>Retraso en pruebas</td><td>Alta</td><td>Media</td><td>Plan de contingencia QA</td></tr>
+              <tr><td>Falta de evidencias</td><td>Media</td><td>Alta</td><td>Checklist obligatorio</td></tr>
+              <tr><td>Rotación de personal</td><td>Baja</td><td>Alta</td><td>Capacitación cruzada</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-title">Actividades</div>
+          <div class="kanban">
+            <div><h4>Pendiente</h4>
+              <div class="tag">Definir política de calidad</div>
+              <div class="tag">Plantilla NC</div>
+            </div>
+            <div><h4>En curso</h4>
+              <div class="tag blue">Auditoría interna</div>
+            </div>
+            <div><h4>Hecho</h4>
+              <div class="tag green">Mapa de procesos</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOCUMENTOS -->
+    <section id="documentos" class="section">
+      <h1>Gestión Documental</h1>
+      <div class="toolbar">
+        <button class="btn primary" onclick="openModal('modalDoc')">+ Nuevo</button>
+        <input type="search" placeholder="Filtrar por título, código, versión…"/>
+      </div>
+      <table class="table">
+        <thead>
+          <tr><th>Código</th><th>Título</th><th>Versión</th><th>Estado</th><th>Propietario</th><th>Últ. actualización</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr><td>PO-01</td><td>Política de Calidad</td><td>1.0</td><td>Vigente</td><td>Dirección</td><td>2025-08-20</td><td><button class="link">Ver</button></td></tr>
+          <tr><td>PR-10</td><td>Control de Versiones</td><td>0.3</td><td>Borrador</td><td>Desarrollo</td><td>2025-08-28</td><td><button class="link">Editar</button></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- AUDITORÍAS -->
+    <section id="auditorias" class="section">
+      <h1>Auditorías</h1>
+      <div class="toolbar">
+        <button class="btn">Programar</button>
+        <select><option>2025</option><option>2024</option></select>
+      </div>
+      <table class="table">
+        <thead><tr><th>Tipo</th><th>Alcance</th><th>Fecha</th><th>Auditor</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr><td>Interna</td><td>Desarrollo</td><td>2025-09-05</td><td>Equipo Calidad</td><td>Programada</td></tr>
+          <tr><td>Externa</td><td>SGC completo</td><td>2025-10-10</td><td>Certificadora</td><td>Pendiente</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- NO CONFORMIDADES -->
+    <section id="noConformidades" class="section">
+      <h1>No Conformidades</h1>
+      <div class="toolbar">
+        <button class="btn primary" onclick="openModal('modalNC')">+ Registrar NC</button>
+        <select>
+          <option>Abiertas</option>
+          <option>Cerradas</option>
+          <option>Todas</option>
+        </select>
+      </div>
+      <table class="table">
+        <thead><tr><th>Código</th><th>Descripción</th><th>Severidad</th><th>Responsable</th><th>Fecha</th><th>Estado</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>NC-2025-003</td><td>Registros de pruebas incompletos</td><td>Alta</td><td>QA Lead</td><td>2025-08-26</td><td>Abierta</td><td><button class="link">Detalle</button></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ACCIONES -->
+    <section id="acciones" class="section">
+      <h1>Acciones Correctivas</h1>
+      <table class="table">
+        <thead><tr><th>Código</th><th>Acción</th><th>NC relacionada</th><th>Responsable</th><th>Fecha compromiso</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr><td>AC-15</td><td>Implementar checklist de QA</td><td>NC-2025-003</td><td>QA Lead</td><td>2025-09-12</td><td>En curso</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- INDICADORES -->
+    <section id="indicadores" class="section">
+      <h1>Indicadores</h1>
+      <div class="grid2">
+        <div class="card"><div class="card-title">% Proyectos a tiempo</div><div class="chart" data-val="76"></div></div>
+        <div class="card"><div class="card-title">% Incidencias resueltas en plazo</div><div class="chart" data-val="88"></div></div>
+      </div>
+    </section>
+
+    <!-- RIESGOS -->
+    <section id="riesgos" class="section">
+      <h1>Gestión de Riesgos</h1>
+      <table class="table">
+        <thead><tr><th>Riesgo</th><th>Prob.</th><th>Impacto</th><th>Nivel</th><th>Acción</th></tr></thead>
+        <tbody>
+          <tr><td>Dependencia de proveedor</td><td>Media</td><td>Alta</td><td>Rojo</td><td>Plan B</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- CLIENTES -->
+    <section id="clientes" class="section">
+      <h1>Satisfacción del Cliente</h1>
+      <table class="table">
+        <thead><tr><th>Cliente</th><th>Proyecto</th><th>Encuesta</th><th>Resultado</th><th>Comentarios</th></tr></thead>
+        <tbody>
+          <tr><td>ACME</td><td>ERP</td><td>Q3-2025</td><td>4.5/5</td><td>Buen soporte</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- CONFIG -->
+    <section id="config" class="section">
+      <h1>Configuración</h1>
+      <div class="grid2">
+        <div class="card"><div class="card-title">Organización</div>
+          <label>Nombre:<input value="SoftDev Solutions"/></label>
+          <label>Alcance SGC:<textarea>Diseño, desarrollo, pruebas y soporte de software empresarial.</textarea></label>
+        </div>
+        <div class="card"><div class="card-title">Usuarios</div>
+          <div class="tag">admin@empresa.com</div>
+          <div class="tag">qa@empresa.com</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODALES -->
+  <div id="modalDoc" class="modal">
+    <div class="modal-box">
+      <h3>Nuevo Documento</h3>
+      <label>Código<input placeholder="PR-XX"/></label>
+      <label>Título<input placeholder="Procedimiento…"/></label>
+      <label>Versión<input value="0.1"/></label>
+      <div class="right">
+        <button class="btn" onclick="closeModal('modalDoc')">Cancelar</button>
+        <button class="btn primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalNC" class="modal">
+    <div class="modal-box">
+      <h3>Registrar No Conformidad</h3>
+      <label>Descripción<textarea></textarea></label>
+      <label>Severidad<select><option>Alta</option><option>Media</option><option>Baja</option></select></label>
+      <label>Responsable<input placeholder="Nombre"/></label>
+      <div class="right">
+        <button class="btn" onclick="closeModal('modalNC')">Cancelar</button>
+        <button class="btn primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
