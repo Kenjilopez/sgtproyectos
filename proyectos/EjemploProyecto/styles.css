@@ -1,0 +1,6 @@
+body { font-family: Inter, Arial, sans-serif; background: #0f172a; color: #e5e7eb; margin: 0; }
+h1 { margin: 24px 0 16px; font-size: 28px; }
+nav { margin: 16px 0; }
+nav a { color: #38bdf8; text-decoration: none; margin: 0 8px; font-weight: 600; }
+nav a:hover { color: #22c55e; }
+div { margin: 24px 0; }

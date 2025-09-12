@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro ISO - Ejemplo Proyecto</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Registro ISO</h1>
+  <form class="registro-iso-form">
+    <div class="registro-iso-grid">
+      <div>
+        <label>Razón Social<input name="razonSocial" type="text" required /></label>
+        <label>NIT<input name="nit" type="text" required /></label>
+        <label>Representante Legal<input name="representanteLegal" type="text" /></label>
+        <label>Sector Económico<input name="sectorEconomico" type="text" /></label>
+        <label>Tipo de empresa<input name="tipoEmpresa" type="text" /></label>
+        <label>Dirección<input name="direccion" type="text" /></label>
+        <label>Teléfonos<input name="telefonos" type="text" /></label>
+      </div>
+      <div>
+        <label>Número de Empleados<input name="numEmpleados" type="number" min="1" /></label>
+        <label>E-mail<input name="email" type="email" /></label>
+        <label>WEB<input name="web" type="text" /></label>
+        <label>Facebook<input name="facebook" type="text" /></label>
+        <label>Instagram<input name="instagram" type="text" /></label>
+        <label>Whatsapp<input name="whatsapp" type="text" /></label>
+        <label>Tiktok<input name="tiktok" type="text" /></label>
+      </div>
+    </div>
+    <div class="registro-iso-btns">
+      <button type="submit" class="primary">Guardar</button>
+      <button type="button">Verificación de Calidad I</button>
+      <button type="button">Verificación de Calidad II</button>
+      <button type="button" onclick="window.location='../index.html'">Regresar</button>
+    </div>
+  </form>
+</body>
+</html>
