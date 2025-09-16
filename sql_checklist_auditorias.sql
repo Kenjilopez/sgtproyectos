@@ -1,4 +1,23 @@
 
+-- Tabla para registro ISO (empresas)
+CREATE TABLE IF NOT EXISTS empresas (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  razon_social VARCHAR(255) NOT NULL,
+  nit VARCHAR(50) NOT NULL,
+  representante_legal VARCHAR(255),
+  sector_economico VARCHAR(100),
+  tipo_empresa VARCHAR(100),
+  direccion VARCHAR(255),
+  telefonos VARCHAR(100),
+  num_empleados INT,
+  email VARCHAR(100),
+  web VARCHAR(100),
+  facebook VARCHAR(100),
+  instagram VARCHAR(100),
+  whatsapp VARCHAR(100),
+  tiktok VARCHAR(100)
+);
+
 -- CREAR BASE DE DATOS Y USUARIO DESDE CERO PARA AUDITORÍA ISO 9001
 
 -- 1. Crear la base de datos

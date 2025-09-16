@@ -1,3 +1,30 @@
+// --- Módulos y configuración inicial ---
+const express = require('express');
+const mysql = require('mysql');
+const cors = require('cors');
+const bcrypt = require('bcrypt');
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'root123', // Cambia si tienes contraseña
+  database: 'auditorias_iso9001'
+});
+
+db.connect(err => {
+  if (err) {
+    console.error('Error de conexión a MySQL:', err);
+  } else {
+    console.log('Conectado a MySQL');
+  }
+});
+
+// --- END configuración inicial ---
+
 // Endpoint para crear una nueva base de datos desde la app (requiere permisos de root)
 app.post('/api/crear-bd', (req, res) => {
   const { nombreBD } = req.body;
@@ -33,7 +60,6 @@ const crearTablaUsuarios = () => {
 crearTablaUsuarios();
 
 // 2. Endpoint para registrar usuario
-const bcrypt = require('bcrypt');
 app.post('/api/registro-usuario', async (req, res) => {
   const { username, password } = req.body;
   const hash = await bcrypt.hash(password, 10);
@@ -88,29 +114,62 @@ app.post('/api/checklist', (req, res) => {
     }
   });
 });
-// Backend básico para conectar a MySQL y exponer una API
-const express = require('express');
-const mysql = require('mysql');
-const cors = require('cors');
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+// Crear tabla empresas si no existe (para registro ISO, con todos los campos del formulario)
+const crearTablaEmpresas = () => {
+  const sql = `CREATE TABLE IF NOT EXISTS empresas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    razon_social VARCHAR(255) NOT NULL,
+    nit VARCHAR(50) NOT NULL,
+    representante_legal VARCHAR(255),
+    sector_economico VARCHAR(100),
+    tipo_empresa VARCHAR(100),
+    direccion VARCHAR(255),
+    telefonos VARCHAR(100),
+    num_empleados INT,
+    email VARCHAR(100),
+    web VARCHAR(100),
+    facebook VARCHAR(100),
+    instagram VARCHAR(100),
+    whatsapp VARCHAR(100),
+    tiktok VARCHAR(100)
+  )`;
+  db.query(sql, err => {
+    if (err) console.error('Error creando tabla empresas:', err);
+  });
+};
+crearTablaEmpresas();
 
-// Cambia estos datos según tu configuración
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'root123', // Cambia si tienes contraseña
-  database: 'auditorias_iso9001'
-});
-
-db.connect(err => {
-  if (err) {
-    console.error('Error de conexión a MySQL:', err);
-  } else {
-    console.log('Conectado a MySQL');
-  }
+// Endpoint para guardar registro ISO (empresa)
+app.post('/api/empresas', (req, res) => {
+  const data = req.body;
+  const sql = `INSERT INTO empresas (
+    razon_social, nit, representante_legal, sector_economico, tipo_empresa,
+    direccion, telefonos, num_empleados, email, web, facebook, instagram, whatsapp, tiktok
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  const values = [
+    data.razonSocial,
+    data.nit,
+    data.representanteLegal,
+    data.sectorEconomico,
+    data.tipoEmpresa,
+    data.direccion,
+    data.telefonos,
+    data.numEmpleados,
+    data.email,
+    data.web,
+    data.facebook,
+    data.instagram,
+    data.whatsapp,
+    data.tiktok
+  ];
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      res.status(500).json({ error: err });
+    } else {
+      res.json({ success: true, id: result.insertId });
+    }
+  });
 });
 
 // Ejemplo de endpoint para obtener datos de una tabla
@@ -131,7 +190,7 @@ app.listen(PORT, () => {
 
 
 // Endpoint para guardar registro ISO
-app.post('/api/registro-iso', (req, res) => {
+app.post('/api/empresas', (req, res) => {
   const data = req.body;
   const sql = `INSERT INTO empresas (razon_social, nit, representante_legal, sector_economico, tipo_empresa)
     VALUES (?, ?, ?, ?, ?)`;

@@ -7,15 +7,47 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>Bienvenido al proyecto de ejemplo</h1>
-  <nav>
-    <a href="docs/">Gestión Documental</a> |
-    <a href="auditorias/">Auditorías</a> |
-  <button onclick="window.location.href='capacitacion/index.html'" class="nav-btn">Capacitación</button> |
-  <button onclick="window.location.href='registroISO/index.html'" style="background:none;border:none;color:#38bdf8;font-weight:600;cursor:pointer;padding:0;">Registro ISO</button>
-  </nav>
-  <div>
-    <p>Utiliza este proyecto como plantilla para nuevos proyectos o categorías.</p>
+  <!-- Login Modal -->
+  <div id="login-modal" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(255,255,255,0.96);display:flex;align-items:center;justify-content:center;z-index:1000;">
+    <form id="login-form" style="background:#fff;padding:32px 24px;border-radius:8px;box-shadow:0 2px 12px #0002;min-width:260px;">
+      <h2 style="margin-top:0">Iniciar sesión</h2>
+      <div style="margin-bottom:12px;">
+        <label>Usuario:<br>
+          <input type="text" id="login-usuario" required autocomplete="username" style="width:100%">
+        </label>
+      </div>
+      <div style="margin-bottom:12px;">
+        <label>Contraseña:<br>
+          <input type="password" id="login-password" required autocomplete="current-password" style="width:100%">
+        </label>
+      </div>
+      <div id="login-error" style="color:#b00;font-size:0.95em;display:none;margin-bottom:10px;"></div>
+      <button type="submit" style="width:100%">Entrar</button>
+    </form>
   </div>
+  <div id="main-content-blur">
+    <h1>Bienvenido al proyecto de ejemplo</h1>
+    <nav>
+      <a href="docs/">Gestión Documental</a> |
+      <a href="auditorias/">Auditorías</a> |
+      <button onclick="window.location.href='capacitacion/index.html'" class="nav-btn">Capacitación</button> |
+      <button onclick="window.location.href='registroISO/index.html'" style="background:none;border:none;color:#38bdf8;font-weight:600;cursor:pointer;padding:0;">Registro ISO</button>
+    </nav>
+  </div>
+  <script>
+    // Mostrar login al cargar
+    document.getElementById('login-modal').style.display = 'flex';
+    document.getElementById('main-content-blur').style.filter = 'blur(2px)';
+    document.getElementById('main-content-blur').style.pointerEvents = 'none';
+
+    // Login handler (acepta cualquier usuario/contraseña)
+    document.getElementById('login-form').onsubmit = function(e) {
+      e.preventDefault();
+      document.getElementById('login-modal').style.display = 'none';
+      document.getElementById('main-content-blur').style.filter = '';
+      document.getElementById('main-content-blur').style.pointerEvents = '';
+      document.getElementById('login-error').style.display = 'none';
+    };
+  </script>
 </body>
 </html>
